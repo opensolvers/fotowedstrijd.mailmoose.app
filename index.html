@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fotowedstrijd grader</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Fotowedstrijd grader</h1>
+      <p class="sub" id="status">Laden…</p>
+    </div>
+    <div class="top-right">
+      <div class="auth" aria-label="Account">
+        <span class="user" id="user" hidden></span>
+        <button type="button" class="auth-btn" id="login">Inloggen</button>
+        <button type="button" class="auth-btn" id="logout" hidden>Uitloggen</button>
+      </div>
+      <div class="filter" id="filter" role="group" aria-label="Filter op cijfer">
+        <span class="filter-label">Filter</span>
+        <button type="button" data-filter="all" class="active">Alle</button>
+        <button type="button" data-filter="none">Geen</button>
+        <button type="button" data-filter="1">1</button>
+        <button type="button" data-filter="2">2</button>
+        <button type="button" data-filter="3">3</button>
+        <button type="button" data-filter="4">4</button>
+        <button type="button" data-filter="5">5</button>
+      </div>
+      <div class="keys" aria-hidden="true">
+        <span><kbd>←</kbd><kbd>→</kbd> navigeren</span>
+        <span><kbd>1</kbd>–<kbd>5</kbd> cijfer</span>
+        <span><kbd>R</kbd> vernieuwen</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="stage">
+    <button type="button" class="nav prev" id="prev" aria-label="Vorige">‹</button>
+    <figure class="frame">
+      <img id="photo" alt="Inzending" hidden>
+      <p class="empty" id="empty">Geen inzendingen gevonden.</p>
+    </figure>
+    <button type="button" class="nav next" id="next" aria-label="Volgende">›</button>
+  </main>
+
+  <aside class="meta" id="meta" hidden>
+    <div class="meta-grid">
+      <div>
+        <div class="label">Maker</div>
+        <div class="value" id="m-name">—</div>
+        <div class="muted" id="m-email">—</div>
+      </div>
+      <div>
+        <div class="label">Locatie / datum</div>
+        <div class="value" id="m-place">—</div>
+        <div class="muted" id="m-date">—</div>
+      </div>
+      <div>
+        <div class="label">Foto</div>
+        <div class="value" id="m-file">—</div>
+        <div class="muted" id="m-index">—</div>
+      </div>
+      <div>
+        <div class="label">Cijfer</div>
+        <div class="grade-row" id="grades" role="group" aria-label="Cijfer 1 tot 5">
+          <button type="button" data-g="1">1</button>
+          <button type="button" data-g="2">2</button>
+          <button type="button" data-g="3">3</button>
+          <button type="button" data-g="4">4</button>
+          <button type="button" data-g="5">5</button>
+        </div>
+        <div class="muted" id="m-saved">Nog niet beoordeeld</div>
+      </div>
+    </div>
+    <p class="notes" id="m-notes" hidden></p>
+  </aside>
+
+  <script src="/app.js"></script>
+</body>
+</html>
