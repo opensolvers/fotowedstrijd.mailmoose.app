@@ -107,7 +107,8 @@
   function matchesFilter(item) {
     if (gradeFilter === "all") return true;
     if (gradeFilter === "none") return !item.grade;
-    return item.grade === gradeFilter;
+    // Numeric filter N = grade N and higher.
+    return typeof item.grade === "number" && item.grade >= gradeFilter;
   }
 
   function applyFilter(preferId) {
@@ -142,7 +143,8 @@
   function filterLabel() {
     if (gradeFilter === "all") return "alle";
     if (gradeFilter === "none") return "geen cijfer";
-    return "cijfer " + gradeFilter;
+    if (gradeFilter === 5) return "cijfer 5";
+    return "cijfer ≥" + gradeFilter;
   }
 
   function updateChrome() {
