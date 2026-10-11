@@ -104,11 +104,18 @@
     );
   }
 
+  function gradeOf(item) {
+    const g = Number(item && item.grade);
+    return g >= 1 && g <= 5 ? g : null;
+  }
+
   function matchesFilter(item) {
+    const g = gradeOf(item);
     if (gradeFilter === "all") return true;
-    if (gradeFilter === "none") return !item.grade;
+    // "Geen" = only photos without a grade.
+    if (gradeFilter === "none") return g == null;
     // Numeric filter N = grade N and higher.
-    return typeof item.grade === "number" && item.grade >= gradeFilter;
+    return g != null && g >= gradeFilter;
   }
 
   function applyFilter(preferId) {
@@ -151,7 +158,7 @@
     const item = current();
     prevBtn.disabled = index <= 0;
     nextBtn.disabled = index >= items.length - 1;
-    const gradedAll = allItems.filter((i) => i.grade).length;
+    const gradedAll = allItems.filter((i) => gradeOf(i) != null).length;
     if (!item) {
       photo.hidden = true;
       empty.hidden = false;
@@ -201,13 +208,14 @@
       notes.textContent = "";
     }
 
+    const itemGrade = gradeOf(item);
     document.querySelectorAll("#grades button").forEach((btn) => {
       const g = Number(btn.dataset.g);
-      btn.classList.toggle("active", item.grade === g);
+      btn.classList.toggle("active", itemGrade === g);
     });
     const saved = document.getElementById("m-saved");
-    saved.textContent = item.grade
-      ? "Opgeslagen: " + item.grade + "/5"
+    saved.textContent = itemGrade
+      ? "Opgeslagen: " + itemGrade + "/5"
       : "Nog niet beoordeeld";
 
     setStatus(
