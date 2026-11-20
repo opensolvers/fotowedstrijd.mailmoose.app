@@ -2,7 +2,7 @@
 
 Hosted grader for the Noorderlichtjagers fotokalender contest.
 
-**Live:** https://fotowedstrijd.mailmoose.app/
+**Offline.** GitHub Pages is unpublished and the custom-domain DNS record is removed. Do not re-enable `.github/workflows/pages.yml` unless the site should go live again.
 
 ## Auth
 
